@@ -408,6 +408,11 @@ free -h
 ps aux | grep roboshop
 ```
 
+### Non Functional Requirements
+- Keep Code DRY (Don't Repeat Your code)
+- Rerun shouldn't fail
+- Password shouldn't hard-code
+
 ---
 
 ## 📞 Support
@@ -421,3 +426,4 @@ For issues and questions:
 ## 📄 License
 
 This project is part of the RoboShop training environment for learning microservices architecture and DevOps practices.
+
