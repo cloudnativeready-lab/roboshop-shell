@@ -53,9 +53,15 @@ java_setup() {
 
 mysql_client_setup() {
     dnf install mysql -y
-    mysql -h mysql-dev.shr-eng.com -uroot -pRoboShop@1 < /app/db/schema.sql
-    mysql -h mysql-dev.shr-eng.com -uroot -pRoboShop@1 </app/db/app-user.sql
-    mysql -h mysql-dev.shr-eng.com -uroot -pRoboShop@1 </app/db/master-data.sql
+
+    # mysql -h mysql-dev.shr-eng.com -uroot -p$1 < /app/db/schema.sql
+    # mysql -h mysql-dev.shr-eng.com -uroot -p$1 </app/db/app-user.sql
+    # mysql -h mysql-dev.shr-eng.com -uroot -p$1 </app/db/master-data.sql
+
+    for file in schema app-user master-data;
+    do 
+        mysql -h mysql-dev.shr-eng.com -uroot -p$1 < /app/db/$file.sql
+    done
 }
 
 go_setup() {
@@ -66,3 +72,4 @@ go_setup() {
     go build
     systemd_setup
 }
+
